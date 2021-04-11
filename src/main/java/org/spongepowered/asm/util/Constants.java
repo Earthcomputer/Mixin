@@ -37,7 +37,7 @@ public abstract class Constants {
     public static final String CLINIT = "<clinit>";
     public static final String IMAGINARY_SUPER = "super$";
     public static final String DEBUG_OUTPUT_PATH = ".mixin.out";
-    public static final String MIXIN_PACKAGE = Mixin.class.getPackage().getName();
+    public static final String MIXIN_PACKAGE = getMixinPackageName();
     public static final String MIXIN_PACKAGE_REF = Constants.MIXIN_PACKAGE.replace('.', '/');
 
     public static final String STRING = "java/lang/String";
@@ -59,6 +59,12 @@ public abstract class Constants {
     public static final String SIDE_UNKNOWN = "UNKNOWN";
     
     private Constants() {}
+
+    private static String getMixinPackageName() {
+        String className = Mixin.class.getName();
+        int dotIndex = className.lastIndexOf('.');
+        return className.substring(0, dotIndex);
+    }
     
     /**
      * Shared Jar Manifest Attributes

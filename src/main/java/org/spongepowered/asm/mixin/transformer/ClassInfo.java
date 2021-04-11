@@ -1861,6 +1861,10 @@ public final class ClassInfo {
         return this.name.hashCode();
     }
 
+    static void clearCache() {
+        ClassInfo.cache.clear();
+    }
+
     /**
      * Return a ClassInfo for the supplied {@link ClassNode}. If a ClassInfo for
      * the class was already defined, then the original ClassInfo is returned

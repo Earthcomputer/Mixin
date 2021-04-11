@@ -27,6 +27,7 @@ package org.spongepowered.asm.mixin.transformer;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
+import com.google.common.annotations.VisibleForTesting;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.launch.MixinInitialisationError;
 import org.spongepowered.asm.mixin.MixinEnvironment;
@@ -42,7 +43,8 @@ import org.spongepowered.asm.util.asm.ASM;
 /**
  * Transformer which manages the mixin configuration and application process
  */
-final class MixinTransformer extends TreeTransformer implements IMixinTransformer {
+@VisibleForTesting
+public final class MixinTransformer extends TreeTransformer implements IMixinTransformer {
     
     /**
      * Impl of mixin transformer factory
@@ -87,7 +89,8 @@ final class MixinTransformer extends TreeTransformer implements IMixinTransforme
      */
     private final MixinClassGenerator generator;
 
-    MixinTransformer() {
+    @VisibleForTesting
+    public MixinTransformer() {
         MixinEnvironment environment = MixinEnvironment.getCurrentEnvironment();
         
         Object globalMixinTransformer = environment.getActiveTransformer();
